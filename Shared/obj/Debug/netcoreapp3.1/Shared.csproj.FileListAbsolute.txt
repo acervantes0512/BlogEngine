@@ -1,0 +1,10 @@
+D:\Zemoga\BlobEngineAPI\Shared\bin\Debug\netcoreapp3.1\Shared.deps.json
+D:\Zemoga\BlobEngineAPI\Shared\bin\Debug\netcoreapp3.1\Shared.dll
+D:\Zemoga\BlobEngineAPI\Shared\bin\Debug\netcoreapp3.1\Shared.pdb
+D:\Zemoga\BlobEngineAPI\Shared\obj\Debug\netcoreapp3.1\Shared.csproj.AssemblyReference.cache
+D:\Zemoga\BlobEngineAPI\Shared\obj\Debug\netcoreapp3.1\Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Zemoga\BlobEngineAPI\Shared\obj\Debug\netcoreapp3.1\Shared.AssemblyInfoInputs.cache
+D:\Zemoga\BlobEngineAPI\Shared\obj\Debug\netcoreapp3.1\Shared.AssemblyInfo.cs
+D:\Zemoga\BlobEngineAPI\Shared\obj\Debug\netcoreapp3.1\Shared.csproj.CoreCompileInputs.cache
+D:\Zemoga\BlobEngineAPI\Shared\obj\Debug\netcoreapp3.1\Shared.dll
+D:\Zemoga\BlobEngineAPI\Shared\obj\Debug\netcoreapp3.1\Shared.pdb

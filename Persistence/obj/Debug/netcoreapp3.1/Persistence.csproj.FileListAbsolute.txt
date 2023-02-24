@@ -1,0 +1,16 @@
+D:\Zemoga\BlobEngineAPI\Persistence\bin\Debug\netcoreapp3.1\Persistence.deps.json
+D:\Zemoga\BlobEngineAPI\Persistence\bin\Debug\netcoreapp3.1\Persistence.runtimeconfig.json
+D:\Zemoga\BlobEngineAPI\Persistence\bin\Debug\netcoreapp3.1\Persistence.runtimeconfig.dev.json
+D:\Zemoga\BlobEngineAPI\Persistence\bin\Debug\netcoreapp3.1\Persistence.dll
+D:\Zemoga\BlobEngineAPI\Persistence\bin\Debug\netcoreapp3.1\Persistence.pdb
+D:\Zemoga\BlobEngineAPI\Persistence\bin\Debug\netcoreapp3.1\Domain.dll
+D:\Zemoga\BlobEngineAPI\Persistence\bin\Debug\netcoreapp3.1\Domain.pdb
+D:\Zemoga\BlobEngineAPI\Persistence\obj\Debug\netcoreapp3.1\Persistence.csproj.AssemblyReference.cache
+D:\Zemoga\BlobEngineAPI\Persistence\obj\Debug\netcoreapp3.1\Persistence.GeneratedMSBuildEditorConfig.editorconfig
+D:\Zemoga\BlobEngineAPI\Persistence\obj\Debug\netcoreapp3.1\Persistence.AssemblyInfoInputs.cache
+D:\Zemoga\BlobEngineAPI\Persistence\obj\Debug\netcoreapp3.1\Persistence.AssemblyInfo.cs
+D:\Zemoga\BlobEngineAPI\Persistence\obj\Debug\netcoreapp3.1\Persistence.csproj.CoreCompileInputs.cache
+D:\Zemoga\BlobEngineAPI\Persistence\obj\Debug\netcoreapp3.1\Persistence.csproj.CopyComplete
+D:\Zemoga\BlobEngineAPI\Persistence\obj\Debug\netcoreapp3.1\Persistence.dll
+D:\Zemoga\BlobEngineAPI\Persistence\obj\Debug\netcoreapp3.1\Persistence.pdb
+D:\Zemoga\BlobEngineAPI\Persistence\obj\Debug\netcoreapp3.1\Persistence.genruntimeconfig.cache
