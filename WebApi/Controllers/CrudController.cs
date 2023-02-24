@@ -19,12 +19,21 @@ namespace WebApi.Controllers
             this._genericService = genericService;
         }
 
+        /// <summary>
+        /// Obtener todos los registros
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<T>>> Get()
         {
             return (await _genericService.GetAllAsync()).ToList();
         }
 
+        /// <summary>
+        /// Obtener registro por id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<T>> Get(int id)
         {
@@ -38,11 +47,45 @@ namespace WebApi.Controllers
             return entity;
         }
 
+        /// <summary>
+        /// Eliminar registro por Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             await _genericService.DeleteAsync(id);
             return NoContent();
+        }
+
+        /// <summary>
+        /// Actualizar Registro
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public async Task<IActionResult> Put(T entity)
+        {
+            await _genericService.UpdateAsync(entity);
+
+            return NoContent();
+        }
+
+        /// <summary>
+        /// Crear un nuevo registro
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult> Post(T entity)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            await _genericService.CreateAsync(entity);
+            return Ok();
         }
     }
 }

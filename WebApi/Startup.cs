@@ -41,7 +41,9 @@ namespace WebApi
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
             services.AddScoped<IPostService, PostService>();
-            
+            services.AddScoped<IPostRepository, PostRepository>();            
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

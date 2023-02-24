@@ -22,17 +22,47 @@ namespace WebApi.Controllers
             this._postService = postService;
         }
 
-        [HttpPost]
-        public async Task<ActionResult> Crear([FromBody] PostDto requestPost)
+        [HttpGet]
+        [Route("GetByUserId")]
+        public async Task<ActionResult<IEnumerable<Post>>> GetByUserId(int id)
         {
-            if (!ModelState.IsValid)
+            IEnumerable<Post> rta = await _postService.getPostsByUserId(id);
+
+            if (rta == null)
             {
-                return BadRequest(ModelState);
+                return NotFound();
             }
 
-            await _postService.addPost(requestPost);
-
-            return Ok();
+            return rta.ToList();
         }
+
+        [HttpGet]
+        [Route("GetPostsEditedByUserId")]
+        public async Task<ActionResult<IEnumerable<Post>>> GetPostsEditedByUserId(int id)
+        {
+            IEnumerable<Post> rta = await _postService.getPostsEditedByUserId(id);
+
+            if (rta == null)
+            {
+                return NotFound();
+            }
+
+            return rta.ToList();
+        }
+
+        [HttpGet]
+        [Route("GetPostsByStatus")]
+        public async Task<ActionResult<IEnumerable<Post>>> GetPostsByStatus(int id)
+        {
+            IEnumerable<Post> rta = await _postService.GetPostsByStatus(id);
+
+            if (rta == null)
+            {
+                return NotFound();
+            }
+
+            return rta.ToList();
+        }
+
     }
 }

@@ -1,10 +1,14 @@
 ﻿using Application.DTOs;
+using Domain.Entities;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Application.Implementations
 {
     public interface IPostService
     {
-        Task addPost(PostDto post);
+        Task<IEnumerable<Post>> getPostsByUserId(int userId);
+        Task<IEnumerable<Post>> getPostsEditedByUserId(int userId);
+        Task<IEnumerable<Post>> GetPostsByStatus(int statudId);
     }
 }

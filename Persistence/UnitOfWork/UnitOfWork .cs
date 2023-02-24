@@ -11,11 +11,15 @@ namespace Persistence.UnitOfWork
     {
         private readonly BlogEngineContext _context;
         private bool disposed = false;
+        private readonly IPostRepository _postRepository;
 
         public UnitOfWork(BlogEngineContext context)
         {
             _context = context;
+            _postRepository = new PostRepository(_context);
         }
+
+        public IPostRepository Posts => _postRepository;
 
         public IRepository<T> GetRepository<T>() where T : class
         {

@@ -1,7 +1,9 @@
 ﻿using Application.DTOs;
 using Application.Implementations;
 using Domain.Entities;
+using Persistence.Repository;
 using Persistence.UnitOfWork;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Application.Interfaces
@@ -9,36 +11,30 @@ namespace Application.Interfaces
     public class PostService : IPostService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IPostRepository _postRepository;
 
-        public PostService(IUnitOfWork unitOfWork)
+        public PostService(IUnitOfWork unitOfWork, IPostRepository postRepository)
         {
             this._unitOfWork = unitOfWork;
+            this._postRepository = postRepository;
         }
 
-        public async Task addPost(PostDto post)
+        public async Task<IEnumerable<Post>> getPostsByUserId(int userId)
         {
-
-            Post newPost = new Post
-            {
-                Tittle = post.Tittle,
-                Content = post.Content,
-                CreationDate = post.CreationDate,
-                UserAuthor = await getUserById(post.UserId),
-                StatusPost = await getStatusPostId(3) // TODO: Eliminar quemado
-            };
-
-            await _unitOfWork.GetRepository<Post>().AddAsync(newPost);
-            _unitOfWork.SaveChanges();
+            return await _unitOfWork.Posts.GetByUserIdAsync(userId);            
         }
 
-        private async Task<User> getUserById(int id)
+        public async Task<IEnumerable<Post>> getPostsEditedByUserId(int userId)
         {
-            return await _unitOfWork.GetRepository<User>().GetByIdAsync(id);
+            return await _unitOfWork.Posts.GetEditedByUserIdAsync(userId);
         }
 
-        private async Task<StatusPost> getStatusPostId(int id)
+        public async Task<IEnumerable<Post>> GetPostsByStatus(int statudId)
         {
-            return await _unitOfWork.GetRepository<StatusPost>().GetByIdAsync(id);
+            return await _unitOfWork.Posts.GetPostsByStatus(statudId);
         }
+
+
+
     }
 }
