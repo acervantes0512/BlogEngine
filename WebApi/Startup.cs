@@ -1,11 +1,17 @@
+using Application.Implementations;
+using Application.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Persistence.EntityFramework;
+using Persistence.Repository;
+using Persistence.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +33,15 @@ namespace WebApi
         {
             services.AddControllers();
             services.AddSwaggerGen();
+
+            services.AddDbContext<BlogEngineContext>();
+
+            // Registrar el repositorio genérico y la unidad de trabajo
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+            services.AddScoped<IPostService, PostService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -69,3 +69,5 @@ D:\Zemoga\BlobEngineAPI\WebApi\obj\Debug\netcoreapp3.1\WebApi.csproj.CopyComplet
 D:\Zemoga\BlobEngineAPI\WebApi\obj\Debug\netcoreapp3.1\WebApi.dll
 D:\Zemoga\BlobEngineAPI\WebApi\obj\Debug\netcoreapp3.1\WebApi.pdb
 D:\Zemoga\BlobEngineAPI\WebApi\obj\Debug\netcoreapp3.1\WebApi.genruntimeconfig.cache
+D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Application.dll
+D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Application.pdb

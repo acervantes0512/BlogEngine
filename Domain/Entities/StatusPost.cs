@@ -7,7 +7,7 @@ namespace Domain.Entities
     public class StatusPost
     {
         public int Id { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
         public ICollection<Post> Posts { get; set; }
     }
 }
