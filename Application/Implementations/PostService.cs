@@ -17,21 +17,21 @@ namespace Application.Interfaces
         {
             this._unitOfWork = unitOfWork;
             this._postRepository = postRepository;
-        }
+        } 
 
         public async Task<IEnumerable<Post>> getPostsByUserId(int userId)
         {
-            return await _unitOfWork.Posts.GetByUserIdAsync(userId);            
+            return await _unitOfWork.PostRepository.GetByUserIdAsync(userId);            
         }
 
         public async Task<IEnumerable<Post>> getPostsEditedByUserId(int userId)
         {
-            return await _unitOfWork.Posts.GetEditedByUserIdAsync(userId);
+            return await _unitOfWork.PostRepository.GetEditedByUserIdAsync(userId);
         }
 
         public async Task<IEnumerable<Post>> GetPostsByStatus(int statudId)
         {
-            return await _unitOfWork.Posts.GetPostsByStatus(statudId);
+            return await _unitOfWork.PostRepository.GetPostsByStatus(statudId);
         }
 
 

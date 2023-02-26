@@ -1,20 +1,28 @@
 using Application.Implementations;
 using Application.Interfaces;
+using Domain.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Persistence.EntityFramework;
 using Persistence.Repository;
 using Persistence.UnitOfWork;
+using Shared;
+using Shared.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace WebApi
@@ -27,26 +35,56 @@ namespace WebApi
         }
 
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
             services.AddSwaggerGen();
 
             services.AddDbContext<BlogEngineContext>();
-
-            // Registrar el repositorio genérico y la unidad de trabajo
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
             services.AddScoped<IPostService, PostService>();
-            services.AddScoped<IPostRepository, PostRepository>();            
+            services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+
+
+            //JWT Configuration
+            var jwtSettings = Configuration.GetSection("JwtSettings").Get<JwtSettings>();
+            services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(Constants.UserRoles.Public.ToString(), policy => policy.RequireRole(Constants.UserRoles.Public.ToString()));
+                options.AddPolicy(Constants.UserRoles.Editor.ToString(), policy => policy.RequireRole(Constants.UserRoles.Editor.ToString()));
+                options.AddPolicy(Constants.UserRoles.Writer.ToString(), policy => policy.RequireRole(Constants.UserRoles.Writer.ToString()));
+            });
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey))
+                    };
+                });
+
+            services.AddAuthorization(options =>
+            {
+                options.DefaultPolicy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+            });
 
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -58,6 +96,8 @@ namespace WebApi
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -65,10 +105,7 @@ namespace WebApi
                 endpoints.MapControllers();
             });
 
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.)
             app.UseSwaggerUI();
         }
     }

@@ -20,16 +20,6 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
-        /// Obtener todos los registros
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<T>>> Get()
-        {
-            return (await _genericService.GetAllAsync()).ToList();
-        }
-
-        /// <summary>
         /// Obtener registro por id
         /// </summary>
         /// <param name="id"></param>

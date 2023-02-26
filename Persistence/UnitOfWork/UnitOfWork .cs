@@ -12,14 +12,17 @@ namespace Persistence.UnitOfWork
         private readonly BlogEngineContext _context;
         private bool disposed = false;
         private readonly IPostRepository _postRepository;
+        private readonly IUserRepository _userRepository;
 
         public UnitOfWork(BlogEngineContext context)
         {
             _context = context;
             _postRepository = new PostRepository(_context);
+            _userRepository = new UserRepository(_context);
         }
 
-        public IPostRepository Posts => _postRepository;
+        public IPostRepository PostRepository => _postRepository;
+        public IUserRepository UserRepository => _userRepository;
 
         public IRepository<T> GetRepository<T>() where T : class
         {

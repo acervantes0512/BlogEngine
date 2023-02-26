@@ -16,9 +16,6 @@ D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFramework
 D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
 D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
 D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
-D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
-D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
 D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
 D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
@@ -71,3 +68,14 @@ D:\Zemoga\BlobEngineAPI\WebApi\obj\Debug\netcoreapp3.1\WebApi.pdb
 D:\Zemoga\BlobEngineAPI\WebApi\obj\Debug\netcoreapp3.1\WebApi.genruntimeconfig.cache
 D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Application.dll
 D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Application.pdb
+D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Abstractions.dll
+D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Shared.dll
+D:\Zemoga\BlobEngineAPI\WebApi\bin\Debug\netcoreapp3.1\Shared.pdb

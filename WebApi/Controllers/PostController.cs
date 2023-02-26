@@ -2,6 +2,7 @@
 using Application.Implementations;
 using Application.Interfaces;
 using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -15,10 +16,12 @@ namespace WebApi.Controllers
     [ApiController]
     public class PostController : CrudController<Post>
     {
+        private readonly IGenericService<Post> _genericService;
         private readonly IPostService _postService;
 
         public PostController(IGenericService<Post> genericService, IPostService postService) : base(genericService)
         {
+            this._genericService = genericService;
             this._postService = postService;
         }
 
@@ -52,6 +55,7 @@ namespace WebApi.Controllers
 
         [HttpGet]
         [Route("GetPostsByStatus")]
+        [Authorize(Roles = "Editor")]
         public async Task<ActionResult<IEnumerable<Post>>> GetPostsByStatus(int id)
         {
             IEnumerable<Post> rta = await _postService.GetPostsByStatus(id);
@@ -62,6 +66,16 @@ namespace WebApi.Controllers
             }
 
             return rta.ToList();
+        }
+
+        /// <summary>
+        /// Obtener todos los registros
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Post>>> Get()
+        {
+            return (await _genericService.GetAllAsync()).ToList();
         }
 
     }

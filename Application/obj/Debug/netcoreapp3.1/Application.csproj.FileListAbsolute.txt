@@ -13,3 +13,5 @@ D:\Zemoga\BlobEngineAPI\Application\bin\Debug\netcoreapp3.1\Persistence.dll
 D:\Zemoga\BlobEngineAPI\Application\bin\Debug\netcoreapp3.1\Persistence.pdb
 D:\Zemoga\BlobEngineAPI\Application\bin\Debug\netcoreapp3.1\Domain.pdb
 D:\Zemoga\BlobEngineAPI\Application\obj\Debug\netcoreapp3.1\Application.csproj.CopyComplete
+D:\Zemoga\BlobEngineAPI\Application\bin\Debug\netcoreapp3.1\Shared.dll
+D:\Zemoga\BlobEngineAPI\Application\bin\Debug\netcoreapp3.1\Shared.pdb

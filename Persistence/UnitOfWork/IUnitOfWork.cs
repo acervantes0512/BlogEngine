@@ -7,7 +7,8 @@ namespace Persistence.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
-        IPostRepository Posts { get; }
+        IPostRepository PostRepository { get; }
+        IUserRepository UserRepository { get; }
         IRepository<T> GetRepository<T>() where T : class;
         void SaveChanges();
     }

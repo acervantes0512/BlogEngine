@@ -3,7 +3,7 @@ using Domain.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Application.Implementations
+namespace Application.Interfaces
 {
     public interface IPostService
     {
