@@ -2,7 +2,7 @@
 
 namespace Persistence.EntityFramework.Migrations
 {
-    public partial class updateUser : Migration
+    public partial class UpdateUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,6 +17,14 @@ namespace Persistence.EntityFramework.Migrations
             migrationBuilder.DropForeignKey(
                 name: "FK_Users_Roles_RoleId",
                 table: "Users");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Username",
+                table: "Users",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
 
             migrationBuilder.AlterColumn<int>(
                 name: "RoleId",
@@ -42,21 +50,62 @@ namespace Persistence.EntityFramework.Migrations
                 oldType: "int",
                 oldNullable: true);
 
+            migrationBuilder.AddColumn<int>(
+                name: "PostId1",
+                table: "EditPostUsers",
+                nullable: true);
+
+            migrationBuilder.AddColumn<int>(
+                name: "UserId",
+                table: "EditPostUsers",
+                nullable: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Username",
+                table: "Users",
+                column: "Username",
+                unique: true,
+                filter: "[Username] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EditPostUsers_PostId1",
+                table: "EditPostUsers",
+                column: "PostId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EditPostUsers_UserId",
+                table: "EditPostUsers",
+                column: "UserId");
+
             migrationBuilder.AddForeignKey(
                 name: "FK_EditPostUsers_Posts_PostId",
                 table: "EditPostUsers",
                 column: "PostId",
                 principalTable: "Posts",
+                principalColumn: "Id");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_EditPostUsers_Posts_PostId1",
+                table: "EditPostUsers",
+                column: "PostId1",
+                principalTable: "Posts",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_EditPostUsers_Users_UserAuthorId",
                 table: "EditPostUsers",
                 column: "UserAuthorId",
                 principalTable: "Users",
+                principalColumn: "Id");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_EditPostUsers_Users_UserId",
+                table: "EditPostUsers",
+                column: "UserId",
+                principalTable: "Users",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Users_Roles_RoleId",
@@ -74,12 +123,48 @@ namespace Persistence.EntityFramework.Migrations
                 table: "EditPostUsers");
 
             migrationBuilder.DropForeignKey(
+                name: "FK_EditPostUsers_Posts_PostId1",
+                table: "EditPostUsers");
+
+            migrationBuilder.DropForeignKey(
                 name: "FK_EditPostUsers_Users_UserAuthorId",
+                table: "EditPostUsers");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_EditPostUsers_Users_UserId",
                 table: "EditPostUsers");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Users_Roles_RoleId",
                 table: "Users");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Users_Username",
+                table: "Users");
+
+            migrationBuilder.DropIndex(
+                name: "IX_EditPostUsers_PostId1",
+                table: "EditPostUsers");
+
+            migrationBuilder.DropIndex(
+                name: "IX_EditPostUsers_UserId",
+                table: "EditPostUsers");
+
+            migrationBuilder.DropColumn(
+                name: "PostId1",
+                table: "EditPostUsers");
+
+            migrationBuilder.DropColumn(
+                name: "UserId",
+                table: "EditPostUsers");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Username",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldNullable: true);
 
             migrationBuilder.AlterColumn<int>(
                 name: "RoleId",

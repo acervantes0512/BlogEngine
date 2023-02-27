@@ -31,12 +31,25 @@ namespace Application.Implementations
             this._unitOfWork = unitOfWork;
         }
 
-        public async Task CreateUserAsync(User user)
+        public async Task<UserControllerDto> CreateUserAsync(User user)
         {
             user.Password = (HashPassword(user.Password));
-            await _unitOfWork.GetRepository<User>().AddAsync(user);
+            User createdUser = await _unitOfWork.GetRepository<User>().AddAsync(user);
             _unitOfWork.SaveChanges();
+            return mapUserControllerDto(createdUser);
         }
+
+        public async Task<UserControllerDto> GetByUsernameAsync(string username)
+        {
+            User user = await _unitOfWork.UserRepository.GetByUsernameAsync(username);
+            return mapUserControllerDto(user);
+        }
+
+        private UserControllerDto mapUserControllerDto(User user)
+        {
+            return new UserControllerDto { Id = user.Id, Name = user.Name, Identification = user.Identification, Username = user.Username, RoleId = user.RoleId };
+        }
+
 
         public async Task<UserDto> AuthenticateAsync(string username, string password)
         {

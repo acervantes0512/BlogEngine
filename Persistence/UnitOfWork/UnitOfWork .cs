@@ -13,16 +13,19 @@ namespace Persistence.UnitOfWork
         private bool disposed = false;
         private readonly IPostRepository _postRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IStatusPostRepository _statusPostRepository;
 
         public UnitOfWork(BlogEngineContext context)
         {
             _context = context;
             _postRepository = new PostRepository(_context);
             _userRepository = new UserRepository(_context);
+            _statusPostRepository = new StatusPostRepository(_context);
         }
 
         public IPostRepository PostRepository => _postRepository;
         public IUserRepository UserRepository => _userRepository;
+        public IStatusPostRepository StatusPostRepository => _statusPostRepository;
 
         public IRepository<T> GetRepository<T>() where T : class
         {

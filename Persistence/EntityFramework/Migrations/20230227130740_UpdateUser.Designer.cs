@@ -10,8 +10,8 @@ using Persistence.EntityFramework;
 namespace Persistence.EntityFramework.Migrations
 {
     [DbContext(typeof(BlogEngineContext))]
-    [Migration("20230226191942_updateUser")]
-    partial class updateUser
+    [Migration("20230227130740_UpdateUser")]
+    partial class UpdateUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,14 +65,24 @@ namespace Persistence.EntityFramework.Migrations
                     b.Property<int>("PostId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("PostId1")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserAuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("PostId");
 
+                    b.HasIndex("PostId1");
+
                     b.HasIndex("UserAuthorId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("EditPostUsers");
                 });
@@ -194,11 +204,15 @@ namespace Persistence.EntityFramework.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId");
+
+                    b.HasIndex("Username")
+                        .IsUnique()
+                        .HasFilter("[Username] IS NOT NULL");
 
                     b.ToTable("Users");
                 });
@@ -217,16 +231,24 @@ namespace Persistence.EntityFramework.Migrations
             modelBuilder.Entity("Domain.Entities.EditPostUser", b =>
                 {
                     b.HasOne("Domain.Entities.Post", "Post")
-                        .WithMany("EditPostUsers")
+                        .WithMany()
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.User", "UserAuthor")
+                    b.HasOne("Domain.Entities.Post", null)
                         .WithMany("EditPostUsers")
+                        .HasForeignKey("PostId1");
+
+                    b.HasOne("Domain.Entities.User", "UserAuthor")
+                        .WithMany()
                         .HasForeignKey("UserAuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("Domain.Entities.User", null)
+                        .WithMany("EditPostUsers")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Domain.Entities.Post", b =>

@@ -2,8 +2,10 @@
 using Application.Implementations;
 using Application.Interfaces;
 using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +25,22 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        [Route("CreateUser")]
+        [Route("CreateUser")]        
         public async Task<ActionResult> CreateUser(User user)
         {
-            await _userService.CreateUserAsync(user);
+            UserControllerDto createdUser = await _userService.CreateUserAsync(user);
 
-            return Ok();
+            return Ok(createdUser);
+        }
+
+        [HttpGet]
+        [Route("GetByUsername")]
+        [Authorize(Roles = nameof(Constants.UserRoles.Editor) + "," + nameof(Constants.UserRoles.Writer) + "," + nameof(Constants.UserRoles.Public))]
+        public async Task<ActionResult> GetByUsername(string username)
+        {
+            UserControllerDto createdUser = await _userService.GetByUsernameAsync(username);
+
+            return Ok(createdUser);
         }
 
     }

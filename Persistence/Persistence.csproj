@@ -17,6 +17,12 @@
     <Compile Remove="EntityFramework\Migrations\20230223233817_InitialMigration.Designer.cs" />
     <Compile Remove="EntityFramework\Migrations\20230224203102_prueba.cs" />
     <Compile Remove="EntityFramework\Migrations\20230224203102_prueba.Designer.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230226191942_updateUser.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230226191942_updateUser.Designer.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230227124800_UpdateUser.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230227124800_UpdateUser.Designer.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230227130352_UpdateUser.cs" />
+    <Compile Remove="EntityFramework\Migrations\20230227130352_UpdateUser.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

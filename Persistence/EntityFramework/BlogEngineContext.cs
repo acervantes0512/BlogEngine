@@ -35,6 +35,38 @@ namespace Persistence.EntityFramework
                 .HasForeignKey(r => r.FinalStatusId)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<EditPostUser>()
+                .HasOne(r => r.UserAuthor)
+                .WithMany()
+                .HasForeignKey(r => r.UserAuthorId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<EditPostUser>()
+                .HasOne(r => r.Post)
+                .WithMany()
+                .HasForeignKey(r => r.PostId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Comment>()
+                .HasOne(r => r.UserAuthor)
+                .WithMany()
+                .HasForeignKey(r => r.UserAuthorId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Comment>()
+                .HasOne(r => r.Post)
+                .WithMany()
+                .HasForeignKey(r => r.PostId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<User>()
+            .HasIndex(p => p.Username)
+            .IsUnique();
+
+            modelBuilder.Entity<StatusPost>()
+            .HasIndex(p => p.Name)
+            .IsUnique();
+
         }
 
     }

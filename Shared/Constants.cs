@@ -12,5 +12,12 @@ namespace Shared
             Editor,
             Writer
         }
+
+        public enum StatusPosts
+        {
+            Pending,
+            Rejected,
+            Approved
+        }
     }
 }

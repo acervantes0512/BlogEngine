@@ -32,16 +32,19 @@ namespace Application.Implementations
             _unitOfWork.SaveChanges();
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task<T> UpdateAsync(T entity)
         {
-            await _unitOfWork.GetRepository<T>().UpdateAsync(entity);
+            T UpdatedEntity = await _unitOfWork.GetRepository<T>().UpdateAsync(entity);
             _unitOfWork.SaveChanges();
+            return UpdatedEntity;
+
         }
 
-        public async Task CreateAsync(T entity)
+        public async Task<T> CreateAsync(T entity)
         {
-            await _unitOfWork.GetRepository<T>().AddAsync(entity);
+            T createdEntity = await _unitOfWork.GetRepository<T>().AddAsync(entity);
             _unitOfWork.SaveChanges();
+            return createdEntity;
         }
     }
 }

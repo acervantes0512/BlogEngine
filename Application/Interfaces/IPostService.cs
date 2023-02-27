@@ -10,5 +10,6 @@ namespace Application.Interfaces
         Task<IEnumerable<Post>> getPostsByUserId(int userId);
         Task<IEnumerable<Post>> getPostsEditedByUserId(int userId);
         Task<IEnumerable<Post>> GetPostsByStatus(int statudId);
+        Task<Post> CreatePost(Post post);
     }
 }
